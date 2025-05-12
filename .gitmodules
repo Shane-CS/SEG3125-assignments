@@ -1,0 +1,3 @@
+[submodule "docs/class_notes"]
+	path = docs/class_notes
+	url = https://github.com/Shane-CS/SEG3125-class_notes.git
