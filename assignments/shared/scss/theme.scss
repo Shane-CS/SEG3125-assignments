@@ -1,0 +1,312 @@
+// 1. Include Bootstrap functions
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// 2. Define Solarized colors using a single map
+$solarized: (
+        'base03': #002b36,  // dark background
+        'base02': #073642,  // dark background highlights
+        'base01': #586e75,  // dark content - secondary
+        'base00': #657b83,  // dark content
+        'base0':  #839496,  // light content
+        'base1':  #93a1a1,  // light content - secondary
+        'base2':  #eee8d5,  // light background highlights
+        'base3':  #fdf6e3,  // light background
+        'yellow': #b58900,
+        'orange': #cb4b16,
+        'red':    #dc322f,
+        'magenta':#d33682,
+        'violet': #6c71c4,
+        'blue':   #268bd2,
+        'cyan':   #2aa198,
+        'green':  #859900
+);
+
+// 3. Create individual variables
+$base03: map-get($solarized, 'base03');
+$base02: map-get($solarized, 'base02');
+$base01: map-get($solarized, 'base01');
+$base00: map-get($solarized, 'base00');
+$base0:  map-get($solarized, 'base0');
+$base1:  map-get($solarized, 'base1');
+$base2:  map-get($solarized, 'base2');
+$base3:  map-get($solarized, 'base3');
+$yellow: map-get($solarized, 'yellow');
+$orange: map-get($solarized, 'orange');
+$red:    map-get($solarized, 'red');
+$magenta:map-get($solarized, 'magenta');
+$violet: map-get($solarized, 'violet');
+$blue:   map-get($solarized, 'blue');
+$cyan:   map-get($solarized, 'cyan');
+$green:  map-get($solarized, 'green');
+
+// 4. Define theme colors using the map
+$primary: $blue;
+$secondary: $violet;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $base2;
+$dark: $base02;
+
+// 5. Theme settings
+$body-bg: $base3;
+$body-color: $base00;
+$body-bg-dark: $base03;
+$body-color-dark: $base0;
+
+// 6. Include Bootstrap variables
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+// 7. Include remainder of required parts
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+
+// 8. Generate RGB values and CSS variables
+:root {
+  @each $name, $color in $solarized {
+    --bs-#{$name}: #{$color};
+    --bs-#{$name}-rgb: #{red($color)}, #{green($color)}, #{blue($color)};
+  }
+}
+
+// 9. Theme mixins
+@mixin rebase($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
+  background-color: $rebase03;
+  color: $rebase0;
+  * { color: $rebase0; }
+  h1,h2,h3,h4,h5,h6 { color: $rebase1; border-color: $rebase0; }
+  a, a:active, a:visited { color: $rebase1; }
+}
+
+@mixin accentize($accent) {
+  a, a:active, a:visited, code.url { color: $accent; }
+  h1,h2,h3,h4,h5,h6 { color: $accent; }
+}
+
+// 10. Include Bootstrap components
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/accordion";
+@import "../../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../../node_modules/bootstrap/scss/pagination";
+@import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/close";
+@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/tooltip";
+@import "../../../node_modules/bootstrap/scss/popover";
+@import "../../../node_modules/bootstrap/scss/carousel";
+@import "../../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/offcanvas";
+@import "../../../node_modules/bootstrap/scss/placeholders";
+@import "../../../node_modules/bootstrap/scss/helpers";
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+// 11. Theme implementations
+html, .light {
+  @include rebase($base3,$base2,$base1,$base0,$base00,$base01,$base02,$base03);
+}
+
+.dark {
+  @include rebase($base03,$base02,$base01,$base00,$base0,$base1,$base2,$base3);
+}
+
+// 12. Dark theme styles
+[data-bs-theme="dark"] {
+  --bs-body-bg: #{$body-bg-dark};
+  --bs-body-color: #{$body-color-dark};
+  @extend .dark;
+
+  .navbar {
+    background-color: $base02;
+  }
+
+  .card {
+    background-color: $base02;
+    border-color: $base01;
+  }
+
+  footer {
+    background-color: $base02;
+  }
+
+  .process-step {
+    background-color: darken($base02, 5%) !important;
+  }
+
+  .btn-primary {
+    color: $base03;
+    .material-icons { color: $base03; }
+  }
+
+  .btn-outline-secondary {
+    color: $base1;
+    .material-icons { color: $base1; }
+
+    &:hover {
+      color: $base03;
+      background-color: $base1;
+      .material-icons { color: $base03; }
+    }
+  }
+
+  .badge {
+    color: $base03;
+    padding: 0.25em 0.5em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    line-height: 1;
+
+    &.bg-blue, &.bg-cyan, &.bg-green, &.bg-violet, &.bg-yellow, &.bg-orange {
+      color: $base03;
+    }
+  }
+
+  // Theme-specific utility classes
+  .bg-base03 { background-color: $base03 !important; }
+  .bg-base02 { background-color: $base02 !important; }
+  .bg-base01 { background-color: $base01 !important; }
+  .bg-base00 { background-color: $base00 !important; }
+  .bg-base0  { background-color: $base0 !important; }
+  .bg-base1  { background-color: $base1 !important; }
+  .bg-base2  { background-color: $base2 !important; }
+  .bg-base3  { background-color: $base3 !important; }
+
+  .text-base03 { color: $base03 !important; }
+  .text-base02 { color: $base02 !important; }
+  .text-base01 { color: $base01 !important; }
+  .text-base00 { color: $base00 !important; }
+  .text-base0  { color: $base0 !important; }
+  .text-base1  { color: $base1 !important; }
+  .text-base2  { color: $base2 !important; }
+  .text-base3  { color: $base3 !important; }
+}
+
+// 13. Light theme styles
+[data-bs-theme="light"] {
+  @extend .light;
+
+  .navbar {
+    background-color: $base2;
+  }
+
+  .card {
+    background-color: $base3;
+    border-color: $base1;
+  }
+
+  footer {
+    background-color: $base2;
+  }
+
+  .process-step, .contact-method {
+    background-color: $base2 !important;
+  }
+
+  .btn-primary {
+    color: $base3;
+    .material-icons { color: $base3; }
+  }
+
+  .btn-outline-secondary {
+    color: $base01;
+    .material-icons { color: $base01; }
+
+    &:hover {
+      color: $base3;
+      background-color: $base01;
+      .material-icons { color: $base3; }
+    }
+  }
+
+  .badge {
+    color: $base3;
+    padding: 0.25em 0.5em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    line-height: 1;
+
+    &.bg-blue, &.bg-cyan, &.bg-green, &.bg-violet, &.bg-yellow, &.bg-orange {
+      color: $base03;
+    }
+  }
+
+  // Theme-specific utility classes
+  .bg-base03 { background-color: $base3 !important; }
+  .bg-base02 { background-color: $base2 !important; }
+  .bg-base01 { background-color: $base1 !important; }
+  .bg-base00 { background-color: $base0 !important; }
+  .bg-base0  { background-color: $base00 !important; }
+  .bg-base1  { background-color: $base01 !important; }
+  .bg-base2  { background-color: $base02 !important; }
+  .bg-base3  { background-color: $base03 !important; }
+
+  .text-base03 { color: $base3 !important; }
+  .text-base02 { color: $base2 !important; }
+  .text-base01 { color: $base1 !important; }
+  .text-base00 { color: $base0 !important; }
+  .text-base0  { color: $base00 !important; }
+  .text-base1  { color: $base01 !important; }
+  .text-base2  { color: $base02 !important; }
+  .text-base3  { color: $base03 !important; }
+}
+
+// 14. General utility classes for all colors
+@each $name, $value in $solarized {
+  .bg-#{$name} {
+    background-color: $value !important;
+  }
+
+  .text-#{$name} {
+    color: $value !important;
+  }
+}
+
+// 15. Theme switcher styles
+#theme-toggle {
+  padding: 0;
+  color: var(--bs-body-color);
+
+  [data-bs-theme="light"] & {
+    .bi-sun-fill { display: none; }
+    .bi-moon-fill { display: inline-block; }
+  }
+
+  [data-bs-theme="dark"] & {
+    .bi-sun-fill { display: inline-block; }
+    .bi-moon-fill { display: none; }
+  }
+}
+
+// 16. Social link styles
+.social-link i {
+  color: white;
+}
+
+// 17. Theme transition
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
