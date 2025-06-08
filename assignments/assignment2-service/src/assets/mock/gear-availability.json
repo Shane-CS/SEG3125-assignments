@@ -1,0 +1,164 @@
+{
+  "categories": [
+    {
+      "id": "microphones",
+      "name": "Microphones",
+      "items": [
+        {
+          "id": "mic-1",
+          "name": "Neumann U87",
+          "description": "Legendary large-diaphragm condenser microphone",
+          "status": "Available",
+          "additionalFee": 50,
+          "recommended": true
+        },
+        {
+          "id": "mic-2",
+          "name": "AKG C414",
+          "description": "Versatile multi-pattern condenser microphone",
+          "status": "Available",
+          "additionalFee": 35,
+          "recommended": true
+        },
+        {
+          "id": "mic-3",
+          "name": "Shure SM7B",
+          "description": "Dynamic microphone perfect for vocals and podcasts",
+          "status": "Limited",
+          "additionalFee": 25,
+          "recommended": true
+        },
+        {
+          "id": "mic-4",
+          "name": "Royer R-121",
+          "description": "Ribbon microphone for warm, natural sound",
+          "status": "Unavailable",
+          "additionalFee": 45,
+          "recommended": false
+        },
+        {
+          "id": "mic-5",
+          "name": "Sennheiser MD421",
+          "description": "Dynamic microphone great for drums and guitar amps",
+          "status": "Available",
+          "additionalFee": 20,
+          "recommended": false
+        }
+      ]
+    },
+    {
+      "id": "preamps",
+      "name": "Preamps",
+      "items": [
+        {
+          "id": "pre-1",
+          "name": "Neve 1073",
+          "description": "Classic preamp with rich, warm character",
+          "status": "Limited",
+          "additionalFee": 75,
+          "recommended": true
+        },
+        {
+          "id": "pre-2",
+          "name": "API 512c",
+          "description": "Punchy, clear preamp with 60dB of gain",
+          "status": "Available",
+          "additionalFee": 60,
+          "recommended": true
+        },
+        {
+          "id": "pre-3",
+          "name": "Universal Audio 610",
+          "description": "Tube preamp with vintage tone",
+          "status": "Available",
+          "additionalFee": 65,
+          "recommended": false
+        },
+        {
+          "id": "pre-4",
+          "name": "SSL VHD",
+          "description": "Clean, transparent preamp with variable harmonic drive",
+          "status": "Available",
+          "additionalFee": 55,
+          "recommended": false
+        }
+      ]
+    },
+    {
+      "id": "compressors",
+      "name": "Compressors",
+      "items": [
+        {
+          "id": "comp-1",
+          "name": "LA-2A",
+          "description": "Optical tube compressor for smooth compression",
+          "status": "Available",
+          "additionalFee": 45,
+          "recommended": true
+        },
+        {
+          "id": "comp-2",
+          "name": "1176 FET",
+          "description": "Fast-acting FET compressor with attitude",
+          "status": "Available",
+          "additionalFee": 40,
+          "recommended": true
+        },
+        {
+          "id": "comp-3",
+          "name": "Distressor",
+          "description": "Versatile compressor with multiple ratio settings",
+          "status": "Limited",
+          "additionalFee": 35,
+          "recommended": false
+        },
+        {
+          "id": "comp-4",
+          "name": "SSL G-Comp",
+          "description": "Bus compressor for gluing mixes together",
+          "status": "Unavailable",
+          "additionalFee": 50,
+          "recommended": false
+        }
+      ]
+    },
+    {
+      "id": "instruments",
+      "name": "Instruments",
+      "items": [
+        {
+          "id": "inst-1",
+          "name": "Yamaha C7 Grand Piano",
+          "description": "7'6\" concert grand piano with rich tone",
+          "status": "Available",
+          "additionalFee": 100,
+          "recommended": true
+        },
+        {
+          "id": "inst-2",
+          "name": "Fender Rhodes",
+          "description": "Vintage electric piano with classic sound",
+          "status": "Available",
+          "additionalFee": 75,
+          "recommended": false
+        },
+        {
+          "id": "inst-3",
+          "name": "Hammond B3 Organ",
+          "description": "Classic organ with Leslie speaker",
+          "status": "Limited",
+          "additionalFee": 85,
+          "recommended": false
+        },
+        {
+          "id": "inst-4",
+          "name": "DW Drum Kit",
+          "description": "Professional drum kit with Zildjian cymbals",
+          "status": "Available",
+          "additionalFee": 90,
+          "recommended": true
+        }
+      ]
+    }
+  ]
+}
