@@ -1,0 +1,72 @@
+{
+  "name": "seg3125",
+  "version": "1.0.0",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "sass-a1": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme-a1.scss:assignments/assignment1-portfolio/css/theme.css --style=compressed",
+    "sass-a2": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme-a2.scss:assignment2-service/css/theme.css --style=compressed",
+    "sass-a3": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme.scss:assignments/assignment3-game/css/theme.css --style=compressed",
+    "sass-a4": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme.scss:assignments/assignment4-shop/css/theme.css --style=compressed",
+    "build-a1": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme-a1.scss:assignments/assignment1-portfolio/css/theme.css --style=compressed",
+    "build-a2": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme-a2.scss:assignments/assignment2-service/css/theme.css --style=compressed",
+    "build-a3": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme.scss:assignments/assignment3-game/css/theme.css --style=compressed",
+    "build-a4": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme.scss:assignments/assignment4-shop/css/theme.css --style=compressed",
+    "build": "npm run build-a1 && npm run build-a2 && npm run build-a3 && npm run build-a4",
+    "start-a1": "npm run clean && parcel assignments/assignment1-portfolio/index.html",
+    "start-a2": "npm run clean && parcel assignments/assignment2-service/index.html",
+    "start-a3": "npm run clean && parcel assignments/assignment3-game/index.html",
+    "start-a4": "npm run clean && parcel assignments/assignment4-shop/index.html",
+    "build-react-a1": "parcel build assignments/assignment1-portfolio/index.html",
+    "build-react-a2": "parcel build assignments/assignment2-service/index.html",
+    "build-react-a3": "parcel build assignments/assignment3-game/index.html --no-optimize",
+    "build-react-a4": "parcel build assignments/assignment4-shop/index.html --no-optimize",
+    "clean": "rm -rf dist",
+    "build-a1-full": "npm run clean && npm run build-a1 && npm run build-react-a1",
+    "build-a2-full": "npm run clean && npm run build-a2 && npm run build-react-a2",
+    "build-a3-full": "npm run clean && npm run build-a3 && npm run build-react-a3",
+    "build-a4-full": "npm run clean && npm run build-a4 && npm run build-react-a4",
+    "docker-build-a1": "npm run build-a1-full && podman build -t ghcr.io/shane-cs/seg3125/assignment1-portfolio:latest -f assignments/assignment1-portfolio/Dockerfile .",
+    "docker-build-a2": "npm run build-a2-full && podman build -t ghcr.io/shane-cs/seg3125/assignment2-service:latest -f assignments/assignment2-service/Dockerfile .",
+    "docker-build-a3": "npm run build-a3-full && podman build -t ghcr.io/shane-cs/seg3125/assignment3-game:latest -f assignments/assignment3-game/Dockerfile .",
+    "docker-build-a4": "npm run build-a4-full && podman build -t ghcr.io/shane-cs/seg3125/assignment4-shop:latest -f assignments/assignment4-shop/Dockerfile .",
+    "docker-push-a1": "podman push ghcr.io/shane-cs/seg3125/assignment1-portfolio:latest",
+    "docker-push-a2": "podman push ghcr.io/shane-cs/seg3125/assignment2-service:latest",
+    "docker-push-a3": "podman push ghcr.io/shane-cs/seg3125/assignment3-game:latest",
+    "docker-push-a4": "podman push ghcr.io/shane-cs/seg3125/assignment4-shop:latest",
+    "docker-build-push-a1": "npm run docker-build-a1 && npm run docker-push-a1",
+    "docker-build-push-a2": "npm run docker-build-a2 && npm run docker-push-a2",
+    "docker-build-push-a3": "npm run docker-build-a3 && npm run docker-push-a3",
+    "docker-build-push-a4": "npm run docker-build-a4 && npm run docker-push-a4",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shane-CS/SEG3125-assignments.git"
+  },
+  "keywords": [],
+  "author": "Shane Stock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shane-CS/SEG3125-assignments/issues"
+  },
+  "homepage": "https://github.com/Shane-CS/SEG3125-assignments#readme",
+  "description": "",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "bootstrap": "^5.3.6",
+    "material-icons": "^1.13.12",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.30.1",
+    "sass": "^1.89.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.15.1",
+    "@parcel/transformer-sass": "^2.11.0",
+    "parcel": "^2.11.0",
+    "sharp": "^0.33.5"
+  }
+}
