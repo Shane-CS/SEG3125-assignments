@@ -7,11 +7,11 @@
   "scripts": {
     "sass-a1": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme-a1.scss:assignments/assignment1-portfolio/css/theme.css --style=compressed",
     "sass-a2": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme-a2.scss:assignment2-service/css/theme.css --style=compressed",
-    "sass-a3": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme.scss:assignments/assignment3-game/css/theme.css --style=compressed",
+    "sass-a3": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme-a3.scss:assignments/assignment3-game/css/theme.css --style=compressed",
     "sass-a4": "sass --load-path=node_modules/bootstrap/scss --quiet-deps --watch assignments/shared/scss/theme.scss:assignments/assignment4-shop/css/theme.css --style=compressed",
     "build-a1": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme-a1.scss:assignments/assignment1-portfolio/css/theme.css --style=compressed",
     "build-a2": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme-a2.scss:assignments/assignment2-service/css/theme.css --style=compressed",
-    "build-a3": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme.scss:assignments/assignment3-game/css/theme.css --style=compressed",
+    "build-a3": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme-a3.scss:assignments/assignment3-game/css/theme.css --style=compressed",
     "build-a4": "sass --load-path=node_modules/bootstrap/scss --quiet-deps assignments/shared/scss/theme.scss:assignments/assignment4-shop/css/theme.css --style=compressed",
     "build": "npm run build-a1 && npm run build-a2 && npm run build-a3 && npm run build-a4",
     "start-a1": "npm run clean && parcel assignments/assignment1-portfolio/index.html",
