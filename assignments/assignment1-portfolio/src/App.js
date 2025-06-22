@@ -622,7 +622,7 @@ const App = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <span className="material-icons me-1">open_in_new</span> Visit Site
+                          <span className="material-icons me-1">open_in_new</span>Visit Site
                         </Button>
                         <span className="badge bg-blue text-white">Assignment 2</span>
                       </div>
@@ -656,10 +656,16 @@ const App = () => {
                     </div>
                     <div className="p-3">
                       <h3 className="h5 mb-2 text-cyan">Interactive Game</h3>
-                      <p>A small interactive game with engaging user experience.</p>
+                      <p>A small interactive game <strong>PairQuest</strong> with engaging user experience.</p>
                       <div className="d-flex justify-content-between align-items-center">
-                        <Button variant="link" className="p-0 text-cyan" disabled>
-                          <span className="material-icons me-1">hourglass_empty</span> Coming Soon
+                        <Button
+                            variant="link"
+                            className="p-0 text-cyan"
+                            href="https://assignment-3-seg3125.shanestock.dev/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                          <span className="material-icons me-1">open_in_new</span>Visit Site
                         </Button>
                         <span className="badge bg-cyan text-white">Assignment 3</span>
                       </div>
