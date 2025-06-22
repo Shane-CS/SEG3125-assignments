@@ -1,0 +1,499 @@
+// 1. Include Bootstrap functions
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// 2. Define Retro colors using a single map
+$retro: (
+        'base03': #1a1a1a,  // darkest background
+        'base02': #2d2d2d,  // dark background highlights
+        'base01': #4a4a4a,  // dark content - secondary
+        'base00': #666666,  // dark content
+        'base0':  #999999,  // light content
+        'base1':  #bababa,  // light content - secondary
+        'base2':  #e0e0e0,  // light background highlights
+        'base3':  #f5f5f5,  // light background
+        'teal':   #309898,  // primary teal
+        'amber':  #FF9F00,  // warm amber
+        'orange': #F4631E,  // vibrant orange
+        'red':    #CB0404,  // bright red
+        'purple': #8B3D88,  // retro purple
+        'blue':   #4B7BE5,  // computer blue
+        'mint':   #50C878,  // mint green
+        'yellow': #FFD700   // golden yellow
+);
+
+// 3. Create individual variables
+$base03: map-get($retro, 'base03');
+$base02: map-get($retro, 'base02');
+$base01: map-get($retro, 'base01');
+$base00: map-get($retro, 'base00');
+$base0:  map-get($retro, 'base0');
+$base1:  map-get($retro, 'base1');
+$base2:  map-get($retro, 'base2');
+$base3:  map-get($retro, 'base3');
+$teal:   map-get($retro, 'teal');
+$amber:  map-get($retro, 'amber');
+$orange: map-get($retro, 'orange');
+$red:    map-get($retro, 'red');
+$purple: map-get($retro, 'purple');
+$blue:   map-get($retro, 'blue');
+$mint:   map-get($retro, 'mint');
+$yellow: map-get($retro, 'yellow');
+
+// 4. Define theme colors
+$primary: $teal;
+$secondary: $purple;
+$success: $mint;
+$info: $blue;
+$warning: $amber;
+$danger: $red;
+$light: $base2;
+$dark: $base02;
+
+// 5. Theme settings and color modes
+$body-bg: $base3;
+$body-color: $base00;
+$body-bg-dark: $base03;
+$body-color-dark: $base0;
+
+// Custom theme colors
+$theme-colors: (
+        "primary": $teal,
+        "secondary": $purple,
+        "success": $mint,
+        "info": $blue,
+        "warning": $amber,
+        "danger": $red,
+        "light": $base2,
+        "dark": $base02
+);
+
+// Color mode specific maps
+$theme-colors-dark: (
+        "primary": $teal,
+        "secondary": $purple,
+        "success": $mint,
+        "info": $blue,
+        "warning": $amber,
+        "danger": $red,
+        "light": $base02,
+        "dark": $base3
+);
+
+// 6. Include Bootstrap variables
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+// Custom theme variables
+[data-bs-theme="dark"] {
+  --bs-body-bg: #{$body-bg-dark};
+  --bs-body-color: #{$body-color-dark};
+  --bs-light: #{$base02};
+  --bs-light-rgb: #{red($base02)}, #{green($base02)}, #{blue($base02)};
+  --bs-dark: #{$base3};
+  --bs-dark-rgb: #{red($base3)}, #{green($base3)}, #{blue($base3)};
+
+  // Additional background utilities
+  --bs-bg-opacity: 1;
+  --bs-light-bg-subtle: #{$base02};
+  --bs-dark-bg-subtle: #{$base3};
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg: #{$body-bg};
+  --bs-body-color: #{$body-color};
+  --bs-light: #{$base2};
+  --bs-light-rgb: #{red($base2)}, #{green($base2)}, #{blue($base2)};
+  --bs-dark: #{$base02};
+  --bs-dark-rgb: #{red($base02)}, #{green($base02)}, #{blue($base02)};
+
+  // Additional background utilities
+  --bs-bg-opacity: 1;
+  --bs-light-bg-subtle: #{$base2};
+  --bs-dark-bg-subtle: #{$base02};
+}
+
+// 7. Include remainder of required parts
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+
+// 8. Generate RGB values and CSS variables
+:root {
+  @each $name, $color in $retro {
+    --bs-#{$name}: #{$color};
+    --bs-#{$name}-rgb: #{red($color)}, #{green($color)}, #{blue($color)};
+  }
+}
+
+// 9. Theme mixins
+@mixin rebase($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
+  background-color: $rebase03;
+  color: $rebase0;
+  * { color: $rebase0; }
+  h1,h2,h3,h4,h5,h6 { color: $rebase1; border-color: $rebase0; }
+  a { color: $rebase3; }
+  //a, a:active { color: $rebase1; }
+  //a:visited { color: $rebase1; }
+}
+
+@mixin accentize($accent) {
+  a, a:active, a:visited, code.url { color: $accent; }
+  h1,h2,h3,h4,h5,h6 { color: $accent; }
+}
+
+// 10. Include Bootstrap components
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/accordion";
+@import "../../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../../node_modules/bootstrap/scss/pagination";
+@import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/close";
+@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/tooltip";
+@import "../../../node_modules/bootstrap/scss/popover";
+@import "../../../node_modules/bootstrap/scss/carousel";
+@import "../../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/offcanvas";
+@import "../../../node_modules/bootstrap/scss/placeholders";
+@import "../../../node_modules/bootstrap/scss/helpers";
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+[data-bs-theme="dark"] {
+  .bg-light {
+    --bs-bg-opacity: 1;
+    background-color: rgba(#{red($base02)}, #{green($base02)}, #{blue($base02)}, var(--bs-bg-opacity)) !important;
+  }
+}
+
+[data-bs-theme="light"] {
+  .bg-light {
+    --bs-bg-opacity: 1;
+    background-color: rgba(#{red($base2)}, #{green($base2)}, #{blue($base2)}, var(--bs-bg-opacity)) !important;
+  }
+}
+
+// 11. Theme implementations
+html, .light {
+  @include rebase($base3,$base2,$base1,$base0,$base00,$base01,$base02,$base03);
+}
+
+.dark {
+  @include rebase($base03,$base02,$base01,$base00,$base0,$base1,$base2,$base3);
+}
+
+// 12. Dark theme styles
+[data-bs-theme="dark"] {
+  --bs-body-bg: #{$body-bg-dark};
+  --bs-body-color: #{$body-color-dark};
+  @extend .dark;
+
+  .navbar {
+    background-color: $base02;
+    border-bottom: 2px solid $teal;
+  }
+
+  .nav-link {
+    color: $base1 !important;
+    &.active {
+      color: $teal !important;
+    }
+  }
+
+  .card {
+    background-color: $base02;
+    border: 2px solid $teal;
+    border-radius: 0;
+  }
+
+  footer {
+    background-color: $base02;
+  }
+
+  .btn {
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-shadow: none;
+
+    &-primary {
+      background-color: $teal;
+      border-color: darken($teal, 10%);
+      color: $base3;
+
+      &:hover {
+        background-color: darken($teal, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+    }
+
+    &-secondary {
+      background-color: $purple;
+      border-color: darken($purple, 10%);
+      color: $base3;
+
+      &:hover {
+        background-color: darken($purple, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $base03;
+    border: 2px solid $teal;
+    border-radius: 0;
+    color: $base1;
+
+    &:focus {
+      box-shadow: none;
+      border-color: $amber;
+    }
+  }
+}
+
+// 13. Light theme styles
+[data-bs-theme="light"] {
+  @extend .light;
+
+  .navbar {
+    background-color: $base2;
+    border-bottom: 2px solid $teal;
+  }
+
+  .nav-link {
+    color: $base01 !important;
+    &.active {
+      color: $teal !important;
+    }
+  }
+
+  .card {
+    background-color: $base3;
+    border: 2px solid $teal;
+    border-radius: 0;
+  }
+
+  footer {
+    background-color: $base2;
+  }
+
+  .btn {
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-shadow: none;
+
+    &-primary {
+      background-color: $teal;
+      border-color: darken($teal, 10%);
+      color: $base3;
+
+      &:hover {
+        background-color: darken($teal, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+    }
+
+    &-secondary {
+      background-color: $purple;
+      border-color: darken($purple, 10%);
+      color: $base3;
+
+      &:hover {
+        background-color: darken($purple, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $base3;
+    border: 2px solid $teal;
+    border-radius: 0;
+    color: $base01;
+
+    &:focus {
+      box-shadow: none;
+      border-color: $amber;
+    }
+  }
+}
+
+// 14. General utility classes for all colors
+@each $name, $value in $retro {
+  .bg-#{$name} {
+    background-color: $value !important;
+  }
+
+  .text-#{$name} {
+    color: $value !important;
+  }
+}
+
+// 15. Retro-specific utility classes
+.retro-border {
+  border: 2px solid $teal;
+  box-shadow: 4px 4px 0 $amber;
+}
+
+.retro-text {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+.retro-gradient {
+  background-color: $teal;
+}
+
+//[data-bs-theme="light"] .retro-gradient {
+//  background-color: $teal;
+//  color: $base3;
+//}
+
+[data-bs-theme="light"] .retro-gradient {
+  background-color: $base2;
+  border-top: 2px solid $teal;
+  border-bottom: 2px solid $teal;
+  color: $base02;
+}
+
+[data-bs-theme="dark"] .retro-gradient {
+  background-color: $base02;
+  border-top: 2px solid $teal;
+  border-bottom: 2px solid $teal;
+  color: $base2;
+}
+
+// 16. CRT screen effect
+.crt-effect {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+
+// 17. Theme transition
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// 18. Additional retro effects
+.retro-inset {
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.retro-glow {
+  text-shadow: 0 0 5px rgba($teal, 0.5);
+}
+
+.retro-button {
+  position: relative;
+  padding: 0.5rem 1rem;
+  background: $teal;
+  border: none;
+  color: $base3;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: darken($teal, 15%);
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+
+    &::after {
+      transform: translateY(2px);
+    }
+  }
+
+  &:active {
+    transform: translateY(2px);
+
+    &::after {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// 19. Retro form styles
+.retro-input {
+  background: $base3;
+  border: 2px solid $teal;
+  padding: 0.5rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $amber;
+    box-shadow: 4px 4px 0 rgba($amber, 0.3);
+  }
+}
+
+// 20. Theme switcher styles
+#theme-toggle {
+  padding: 0;
+  color: var(--bs-body-color);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  [data-bs-theme="light"] & {
+    .bi-sun-fill { display: none; }
+    .bi-moon-fill { display: inline-block; }
+  }
+
+  [data-bs-theme="dark"] & {
+    .bi-sun-fill { display: inline-block; }
+    .bi-moon-fill { display: none; }
+  }
+}
