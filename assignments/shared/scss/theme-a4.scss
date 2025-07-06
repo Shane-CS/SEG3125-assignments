@@ -1,0 +1,393 @@
+// 1. Include Bootstrap functions
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// 2. Define Coffee & Plants colors using a single map
+$coffee-plants: (
+        'espresso':      #2C1810,  // deep coffee brown
+        'mocha':         #483434,  // rich mocha
+        'coffee-bean':   #6B4F4F,  // roasted bean
+        'latte':         #EED6C4,  // creamy latte
+        'cream':         #FFF3E4,  // coffee cream
+        'plant-dark':    #1B4D3E,  // dark plant green
+        'plant-medium':  #367D6C,  // medium plant green
+        'plant-light':   #7CA797,  // light plant green
+        'leaf-dark':     #1D3D31,  // dark leaf
+        'leaf-medium':   #2D5A4D,  // medium leaf
+        'soil':          #4A3933,  // rich soil
+        'terracotta':    #C17F59,  // terracotta pot
+        'monstera':      #4F6F5C,  // monstera leaf
+        'fern':          #739081,  // fern green
+        'sage':          #9CAF88,  // sage green
+        'bamboo':        #D4C8BE   // bamboo beige
+);
+
+// 3. Create individual variables
+$espresso:      map-get($coffee-plants, 'espresso');
+$mocha:         map-get($coffee-plants, 'mocha');
+$coffee-bean:   map-get($coffee-plants, 'coffee-bean');
+$latte:         map-get($coffee-plants, 'latte');
+$cream:         map-get($coffee-plants, 'cream');
+$plant-dark:    map-get($coffee-plants, 'plant-dark');
+$plant-medium:  map-get($coffee-plants, 'plant-medium');
+$plant-light:   map-get($coffee-plants, 'plant-light');
+$leaf-dark:     map-get($coffee-plants, 'leaf-dark');
+$leaf-medium:   map-get($coffee-plants, 'leaf-medium');
+$soil:          map-get($coffee-plants, 'soil');
+$terracotta:    map-get($coffee-plants, 'terracotta');
+$monstera:      map-get($coffee-plants, 'monstera');
+$fern:          map-get($coffee-plants, 'fern');
+$sage:          map-get($coffee-plants, 'sage');
+$bamboo:        map-get($coffee-plants, 'bamboo');
+
+// 4. Define theme colors
+$primary:   $plant-medium;
+$secondary: $coffee-bean;
+$success:   $monstera;
+$info:      $plant-light;
+$warning:   $terracotta;
+$danger:    #D64933;  // A warm red tone for danger
+$light:     $cream;
+$dark:      $espresso;
+
+// 5. Theme settings
+$body-bg: $cream;
+$body-color: $mocha;
+$body-bg-dark: $espresso;
+$body-color-dark: $latte;
+
+// Custom theme colors
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark
+);
+
+// Color mode specific maps
+$theme-colors-dark: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $mocha,
+        "dark": $cream
+);
+
+// 6. Include Bootstrap variables
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+// Custom theme variables
+[data-bs-theme="dark"] {
+  --bs-body-bg: #{$body-bg-dark};
+  --bs-body-color: #{$body-color-dark};
+  --bs-light: #{$mocha};
+  --bs-light-rgb: #{red($mocha)}, #{green($mocha)}, #{blue($mocha)};
+  --bs-dark: #{$cream};
+  --bs-dark-rgb: #{red($cream)}, #{green($cream)}, #{blue($cream)};
+
+  --bs-bg-opacity: 1;
+  --bs-light-bg-subtle: #{$mocha};
+  --bs-dark-bg-subtle: #{$cream};
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg: #{$body-bg};
+  --bs-body-color: #{$body-color};
+  --bs-light: #{$cream};
+  --bs-light-rgb: #{red($cream)}, #{green($cream)}, #{blue($cream)};
+  --bs-dark: #{$espresso};
+  --bs-dark-rgb: #{red($espresso)}, #{green($espresso)}, #{blue($espresso)};
+
+  --bs-bg-opacity: 1;
+  --bs-light-bg-subtle: #{$cream};
+  --bs-dark-bg-subtle: #{$espresso};
+}
+
+// 7. Include remainder of required parts
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+
+// 8. Generate RGB values and CSS variables
+:root {
+  @each $name, $color in $coffee-plants {
+    --bs-#{$name}: #{$color};
+    --bs-#{$name}-rgb: #{red($color)}, #{green($color)}, #{blue($color)};
+  }
+}
+
+// 9. Theme mixins
+@mixin rebase($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
+  background-color: $rebase03;
+  color: $rebase0;
+  * { color: $rebase0; }
+  h1,h2,h3,h4,h5,h6 { color: $rebase1; border-color: $rebase0; }
+  a { color: $plant-medium; }
+}
+
+// 10. Include Bootstrap components
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/accordion";
+@import "../../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../../node_modules/bootstrap/scss/pagination";
+@import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/close";
+@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/tooltip";
+@import "../../../node_modules/bootstrap/scss/popover";
+@import "../../../node_modules/bootstrap/scss/carousel";
+@import "../../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/offcanvas";
+@import "../../../node_modules/bootstrap/scss/placeholders";
+@import "../../../node_modules/bootstrap/scss/helpers";
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+// 11. Theme implementations
+html, .light {
+  @include rebase($cream,$bamboo,$coffee-bean,$mocha,$espresso,$soil,$leaf-dark,$espresso);
+}
+
+.dark {
+  @include rebase($espresso,$mocha,$coffee-bean,$latte,$cream,$bamboo,$plant-light,$plant-medium);
+}
+
+// 12. Dark theme styles
+[data-bs-theme="dark"] {
+  --bs-body-bg: #{$body-bg-dark};
+  --bs-body-color: #{$body-color-dark};
+  @extend .dark;
+
+  .navbar {
+    background-color: $mocha;
+    border-bottom: 2px solid $plant-medium;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .nav-link {
+    color: $latte !important;
+    &.active {
+      color: $plant-medium !important;
+      border-bottom: 2px solid $plant-medium;
+    }
+    &:hover {
+      color: $plant-light !important;
+    }
+  }
+
+  .card {
+    background-color: $mocha;
+    border: 1px solid $plant-dark;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  footer {
+    background-color: $mocha;
+    border-top: 2px solid $plant-medium;
+  }
+
+  .btn {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+
+    &-primary {
+      background-color: $plant-medium;
+      border-color: $plant-dark;
+      color: $cream;
+
+      &:hover {
+        background-color: darken($plant-medium, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+    }
+
+    &-secondary {
+      background-color: $coffee-bean;
+      border-color: $espresso;
+      color: $cream;
+
+      &:hover {
+        background-color: darken($coffee-bean, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $espresso;
+    border: 2px solid $plant-dark;
+    color: $latte;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($plant-medium, 0.25);
+      border-color: $plant-medium;
+    }
+  }
+}
+
+// 13. Light theme styles
+[data-bs-theme="light"] {
+  @extend .light;
+
+  .navbar {
+    background-color: $cream;
+    border-bottom: 2px solid $plant-medium;
+    box-shadow: 0 2px 8px rgba($mocha, 0.1);
+  }
+
+  .nav-link {
+    color: $mocha !important;
+    &.active {
+      color: $plant-medium !important;
+      border-bottom: 2px solid $plant-medium;
+    }
+    &:hover {
+      color: $plant-dark !important;
+    }
+  }
+
+  .card {
+    background-color: $cream;
+    border: 1px solid $plant-medium;
+    box-shadow: 0 4px 12px rgba($mocha, 0.1);
+  }
+
+  footer {
+    background-color: $cream;
+    border-top: 2px solid $plant-medium;
+  }
+
+  .btn {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+
+    &-primary {
+      background-color: $plant-medium;
+      border-color: $plant-dark;
+      color: $cream;
+
+      &:hover {
+        background-color: darken($plant-medium, 5%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($mocha, 0.2);
+      }
+    }
+
+    &-secondary {
+      background-color: $coffee-bean;
+      border-color: $mocha;
+      color: $cream;
+
+      &:hover {
+        background-color: darken($coffee-bean, 5%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($mocha, 0.2);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $cream;
+    border: 2px solid $plant-medium;
+    color: $mocha;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($plant-medium, 0.25);
+      border-color: $plant-dark;
+    }
+  }
+}
+
+// 14. Custom utility classes
+.coffee-gradient {
+  background: linear-gradient(
+                  135deg,
+                  $espresso,
+                  $mocha,
+                  $coffee-bean
+  );
+}
+
+.plant-gradient {
+  background: linear-gradient(
+                  135deg,
+                  $plant-dark,
+                  $plant-medium,
+                  $plant-light
+  );
+}
+
+.organic-shadow {
+  box-shadow:
+          0 4px 12px rgba($espresso, 0.15),
+          0 8px 24px rgba($plant-dark, 0.1);
+}
+
+// 15. Custom scrollbar
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bs-body-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $plant-medium;
+  border-radius: 6px;
+  border: 3px solid var(--bs-body-bg);
+
+  &:hover {
+    background: $plant-dark;
+  }
+}
+
+// 16. Theme transition
+body {
+  transition: background-color 0.4s ease-in-out, color 0.3s ease-in-out;
+}
+
+// 17. Theme switcher styles
+#theme-toggle {
+  padding: 0;
+  color: var(--bs-body-color);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  [data-bs-theme="light"] & {
+    .bi-sun-fill { display: none; }
+    .bi-moon-fill { display: inline-block; }
+  }
+
+  [data-bs-theme="dark"] & {
+    .bi-sun-fill { display: inline-block; }
+    .bi-moon-fill { display: none; }
+  }
+}
