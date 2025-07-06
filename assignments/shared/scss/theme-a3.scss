@@ -1,0 +1,398 @@
+// 1. Include Bootstrap functions
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// 2. Define Forest-River colors using a single map
+$forest-river: (
+        'earth-deep':    #2C1810,  // deep earth brown
+        'bark-dark':     #3D2B1F,  // dark tree bark
+        'stone':         #4A4238,  // river stone
+        'moss-dark':     #4B5842,  // dark moss
+        'water-deep':    #2E4A54,  // deep water
+        'pine':          #4A5D4C,  // pine green
+        'river':         #7291A3,  // river blue
+        'moss-light':    #808D5E,  // light moss
+        'bark':          #69573B,  // tree bark
+        'leaf':          #79804D,  // leaf green
+        'pebble':        #B5AFA7,  // river pebble
+        'mist':          #E6EBE0,  // morning mist
+        'sunlight':      #F4F1E9,  // filtered sunlight
+        'water-light':   #A8C1D1,  // light water
+        'fern':          #95A878,  // fern green
+        'sand':          #D2C2A9   // river sand
+);
+
+// 3. Create individual variables
+$earth-deep:    map-get($forest-river, 'earth-deep');
+$bark-dark:     map-get($forest-river, 'bark-dark');
+$stone:         map-get($forest-river, 'stone');
+$moss-dark:     map-get($forest-river, 'moss-dark');
+$water-deep:    map-get($forest-river, 'water-deep');
+$pine:          map-get($forest-river, 'pine');
+$river:         map-get($forest-river, 'river');
+$moss-light:    map-get($forest-river, 'moss-light');
+$bark:          map-get($forest-river, 'bark');
+$leaf:          map-get($forest-river, 'leaf');
+$pebble:        map-get($forest-river, 'pebble');
+$mist:          map-get($forest-river, 'mist');
+$sunlight:      map-get($forest-river, 'sunlight');
+$water-light:   map-get($forest-river, 'water-light');
+$fern:          map-get($forest-river, 'fern');
+$sand:          map-get($forest-river, 'sand');
+
+// 4. Define theme colors
+$primary:   $river;
+$secondary: $moss-light;
+$success:   $fern;
+$info:      $water-light;
+$warning:   $sand;
+$danger:    #BC4B51;  // A reddish tone for danger
+$light:     $mist;
+$dark:      $earth-deep;
+
+// 5. Theme settings
+$body-bg: $sunlight;
+$body-color: $stone;
+$body-bg-dark: $earth-deep;
+$body-color-dark: $pebble;
+
+// Custom theme colors
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark
+);
+
+// Color mode specific maps
+$theme-colors-dark: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $bark-dark,
+        "dark": $mist
+);
+
+// 6. Include Bootstrap variables
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+// Custom theme variables
+[data-bs-theme="dark"] {
+  --bs-body-bg: #{$body-bg-dark};
+  --bs-body-color: #{$body-color-dark};
+  --bs-light: #{$bark-dark};
+  --bs-light-rgb: #{red($bark-dark)}, #{green($bark-dark)}, #{blue($bark-dark)};
+  --bs-dark: #{$mist};
+  --bs-dark-rgb: #{red($mist)}, #{green($mist)}, #{blue($mist)};
+
+  --bs-bg-opacity: 1;
+  --bs-light-bg-subtle: #{$bark-dark};
+  --bs-dark-bg-subtle: #{$mist};
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg: #{$body-bg};
+  --bs-body-color: #{$body-color};
+  --bs-light: #{$mist};
+  --bs-light-rgb: #{red($mist)}, #{green($mist)}, #{blue($mist)};
+  --bs-dark: #{$earth-deep};
+  --bs-dark-rgb: #{red($earth-deep)}, #{green($earth-deep)}, #{blue($earth-deep)};
+
+  --bs-bg-opacity: 1;
+  --bs-light-bg-subtle: #{$mist};
+  --bs-dark-bg-subtle: #{$earth-deep};
+}
+
+// 7. Include remainder of required parts
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+
+// 8. Generate RGB values and CSS variables
+:root {
+  @each $name, $color in $forest-river {
+    --bs-#{$name}: #{$color};
+    --bs-#{$name}-rgb: #{red($color)}, #{green($color)}, #{blue($color)};
+  }
+}
+
+// 9. Theme mixins
+@mixin rebase($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
+  background-color: $rebase03;
+  color: $rebase0;
+  * { color: $rebase0; }
+  h1,h2,h3,h4,h5,h6 { color: $rebase1; border-color: $rebase0; }
+  a { color: $river; }
+}
+
+// 10. Include Bootstrap components
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/accordion";
+@import "../../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../../node_modules/bootstrap/scss/pagination";
+@import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/close";
+@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/tooltip";
+@import "../../../node_modules/bootstrap/scss/popover";
+@import "../../../node_modules/bootstrap/scss/carousel";
+@import "../../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/offcanvas";
+@import "../../../node_modules/bootstrap/scss/placeholders";
+@import "../../../node_modules/bootstrap/scss/helpers";
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+// 11. Theme implementations
+html, .light {
+  @include rebase($sunlight,$mist,$pebble,$stone,$bark-dark,$bark,$water-deep,$earth-deep);
+}
+
+.dark {
+  @include rebase($earth-deep,$bark-dark,$stone,$pebble,$mist,$sunlight,$water-light,$river);
+}
+
+// 12. Dark theme styles
+[data-bs-theme="dark"] {
+  --bs-body-bg: #{$body-bg-dark};
+  --bs-body-color: #{$body-color-dark};
+  @extend .dark;
+
+  .navbar {
+    background-color: $bark-dark;
+    border-bottom: 2px solid $river;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .nav-link {
+    color: $pebble !important;
+    &.active {
+      color: $river !important;
+      border-bottom: 2px solid $river;
+    }
+  }
+
+  .card {
+    background-color: $bark-dark;
+    border: 1px solid $water-deep;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  footer {
+    background-color: $bark-dark;
+    border-top: 2px solid $river;
+  }
+
+  .btn {
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &-primary {
+      background-color: $river;
+      border-color: $water-deep;
+      color: $sunlight;
+
+      &:hover {
+        background-color: darken($river, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+    }
+
+    &-secondary {
+      background-color: $moss-light;
+      border-color: $moss-dark;
+      color: $earth-deep;
+
+      &:hover {
+        background-color: darken($moss-light, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $earth-deep;
+    border: 2px solid $water-deep;
+    color: $pebble;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($river, 0.25);
+      border-color: $river;
+    }
+  }
+}
+
+// 13. Light theme styles
+[data-bs-theme="light"] {
+  @extend .light;
+
+  .navbar {
+    background-color: $mist;
+    border-bottom: 2px solid $river;
+    box-shadow: 0 2px 8px rgba($stone, 0.1);
+  }
+
+  .nav-link {
+    color: $stone !important;
+    &.active {
+      color: $river !important;
+      border-bottom: 2px solid $river;
+    }
+  }
+
+  .card {
+    background-color: $sunlight;
+    border: 1px solid $river;
+    box-shadow: 0 4px 12px rgba($stone, 0.1);
+  }
+
+  footer {
+    background-color: $mist;
+    border-top: 2px solid $river;
+  }
+
+  .btn {
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &-primary {
+      background-color: $river;
+      border-color: $water-deep;
+      color: $sunlight;
+
+      &:hover {
+        background-color: darken($river, 5%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($stone, 0.2);
+      }
+    }
+
+    &-secondary {
+      background-color: $moss-light;
+      border-color: $moss-dark;
+      color: $earth-deep;
+
+      &:hover {
+        background-color: darken($moss-light, 5%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($stone, 0.2);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $sunlight;
+    border: 2px solid $river;
+    color: $stone;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($river, 0.25);
+      border-color: $water-deep;
+    }
+  }
+}
+
+// 14. General utility classes for all colors
+@each $name, $value in $forest-river {
+  .bg-#{$name} {
+    background-color: $value !important;
+  }
+
+  .text-#{$name} {
+    color: $value !important;
+  }
+}
+
+// 15. Nature-inspired effects
+.forest-shadow {
+  box-shadow:
+          0 4px 12px rgba($earth-deep, 0.15),
+          0 8px 24px rgba($water-deep, 0.1);
+}
+
+.river-gradient {
+  background: linear-gradient(
+                  45deg,
+                  $water-deep,
+                  $river,
+                  $water-light
+  );
+}
+
+.forest-gradient {
+  background: linear-gradient(
+                  45deg,
+                  $moss-dark,
+                  $pine,
+                  $fern
+  );
+}
+
+// 16. Theme switcher styles
+#theme-toggle {
+  padding: 0;
+  color: var(--bs-body-color);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  [data-bs-theme="light"] & {
+    .bi-sun-fill { display: none; }
+    .bi-moon-fill { display: inline-block; }
+  }
+
+  [data-bs-theme="dark"] & {
+    .bi-sun-fill { display: inline-block; }
+    .bi-moon-fill { display: none; }
+  }
+}
+
+// 17. Theme transition
+body {
+  transition: background-color 0.4s ease-in-out, color 0.3s ease-in-out;
+}
+
+// 18. Custom scrollbar
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bs-body-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $river;
+  border-radius: 6px;
+  border: 3px solid var(--bs-body-bg);
+
+  &:hover {
+    background: $water-deep;
+  }
+}
