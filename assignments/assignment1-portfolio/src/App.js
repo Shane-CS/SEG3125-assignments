@@ -699,10 +699,16 @@ const App = () => {
                     </div>
                     <div className="p-3">
                       <h3 className="h5 mb-2 text-green">E-commerce Site</h3>
-                      <p>An online shopping experience with intuitive navigation and checkout.</p>
+                      <p>A coffee shop <strong>Steep & Bloom Co.</strong> with intuitive nav and checkout.</p>
                       <div className="d-flex justify-content-between align-items-center">
-                        <Button variant="link" className="p-0 text-green" disabled>
-                          <span className="material-icons me-1">hourglass_empty</span> Coming Soon
+                        <Button
+                            variant="link"
+                            className="p-0 text-green"
+                            href="https://assignment-4-seg3125.shanestock.dev/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                          <span className="material-icons me-1">open_in_new</span>Visit Site
                         </Button>
                         <span className="badge bg-green text-white">Assignment 4</span>
                       </div>
