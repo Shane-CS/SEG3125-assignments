@@ -1,0 +1,368 @@
+// 1. Include Bootstrap functions
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// 2. Define Pastel Business colors using a single map with enhanced contrast
+$business-pastel: (
+        'pastel-blue':    #4a90e2, // Enhanced blue with better contrast
+        'pastel-green':   #27ae60, // Enhanced green with better contrast
+        'pastel-yellow':  #f39c12, // Enhanced yellow with better contrast
+        'pastel-peach':   #e67e22, // Enhanced peach with better contrast
+        'pastel-purple':  #9b59b6, // Enhanced purple with better contrast
+        'pastel-teal':    #16a085, // Enhanced teal with better contrast
+        'pastel-coral':   #e74c3c, // Enhanced coral with better contrast
+        'pastel-mint':    #2ecc71, // Enhanced mint with better contrast
+        'pastel-gray':    #95a5a6, // Enhanced gray with better contrast
+        'pastel-orange':  #d35400, // Enhanced orange with better contrast
+        'pastel-pink':    #e84393, // Enhanced pink with better contrast
+        'pastel-lime':    #7cb342, // Enhanced lime with better contrast
+        'pastel-cyan':    #00acc1, // Enhanced cyan with better contrast
+        'light-bg':       #FFFFFF,
+        'dark-bg':        #2c3e50, // Darker background for better contrast
+        'text-dark':      #212529,
+        'text-light':     #F8F9FA
+);
+
+// 3. Create individual variables
+$pastel-blue:  map-get($business-pastel, 'pastel-blue');
+$pastel-green: map-get($business-pastel, 'pastel-green');
+$pastel-yellow:map-get($business-pastel, 'pastel-yellow');
+$pastel-peach: map-get($business-pastel, 'pastel-peach');
+$pastel-purple:map-get($business-pastel, 'pastel-purple');
+$pastel-teal:  map-get($business-pastel, 'pastel-teal');
+$pastel-coral: map-get($business-pastel, 'pastel-coral');
+$pastel-mint:  map-get($business-pastel, 'pastel-mint');
+$pastel-gray:  map-get($business-pastel, 'pastel-gray');
+$pastel-orange:map-get($business-pastel, 'pastel-orange');
+$pastel-pink:  map-get($business-pastel, 'pastel-pink');
+$pastel-lime:  map-get($business-pastel, 'pastel-lime');
+$pastel-cyan:  map-get($business-pastel, 'pastel-cyan');
+$light-bg:     map-get($business-pastel, 'light-bg');
+$dark-bg:      map-get($business-pastel, 'dark-bg');
+$text-dark:    map-get($business-pastel, 'text-dark');
+$text-light:   map-get($business-pastel, 'text-light');
+
+// 4. Define theme colors
+$primary:   $pastel-blue;
+$secondary: $pastel-purple;
+$success:   $pastel-mint;
+$info:      $pastel-teal;
+$warning:   $pastel-yellow;
+$danger:    $pastel-coral;
+$light:     $light-bg;
+$dark:      $dark-bg;
+
+// 5. Theme settings
+$body-bg:         $light-bg;
+$body-color:      $text-dark;
+$body-bg-dark:    $dark-bg;
+$body-color-dark: $text-light;
+
+// 6. Custom theme colors
+$theme-colors: (
+        "primary":   $primary,
+        "secondary": $secondary,
+        "success":   $success,
+        "info":      $info,
+        "warning":   $warning,
+        "danger":    $danger,
+        "light":     $light,
+        "dark":      $dark
+);
+
+// Color mode specific maps
+$theme-colors-dark: (
+        "primary":   $primary,
+        "secondary": $secondary,
+        "success":   $success,
+        "info":      $info,
+        "warning":   $warning,
+        "danger":    $danger,
+        "light":     $text-light,
+        "dark":      $dark
+);
+
+// 7. Include Bootstrap variables
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+// Custom theme variables
+[data-bs-theme="dark"] {
+  --bs-body-bg:           #{$body-bg-dark};
+  --bs-body-color:        #{$body-color-dark};
+  --bs-light:             #{$text-light};
+  --bs-light-rgb:         #{red($text-light)}, #{green($text-light)}, #{blue($text-light)};
+  --bs-dark:              #{$dark-bg};
+  --bs-dark-rgb:          #{red($dark-bg)}, #{green($dark-bg)}, #{blue($dark-bg)};
+  --bs-bg-opacity:        1;
+  --bs-light-bg-subtle:   #{$text-light};
+  --bs-dark-bg-subtle:    #{$dark-bg};
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg:           #{$body-bg};
+  --bs-body-color:        #{$body-color};
+  --bs-light:             #{$light-bg};
+  --bs-light-rgb:         #{red($light-bg)}, #{green($light-bg)}, #{blue($light-bg)};
+  --bs-dark:              #{$text-dark};
+  --bs-dark-rgb:          #{red($text-dark)}, #{green($text-dark)}, #{blue($text-dark)};
+  --bs-bg-opacity:        1;
+  --bs-light-bg-subtle:   #{$light-bg};
+  --bs-dark-bg-subtle:    #{$text-dark};
+}
+
+// 8. Include remainder of required parts
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+
+// 9. Generate RGB values and CSS variables
+:root {
+  @each $name, $color in $business-pastel {
+    --bs-#{$name}:      #{$color};
+    --bs-#{$name}-rgb:  #{red($color)}, #{green($color)}, #{blue($color)};
+  }
+}
+
+// 10. Theme mixins
+@mixin rebase($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
+  background-color: $rebase03;
+  color:            $rebase0;
+  * { color:        $rebase0; }
+  h1,h2,h3,h4,h5,h6 { color: $rebase1; border-color: $rebase0; }
+  a { color: $primary; }
+}
+
+// 11. Include Bootstrap components
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/accordion";
+@import "../../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../../node_modules/bootstrap/scss/pagination";
+@import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/close";
+@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/tooltip";
+@import "../../../node_modules/bootstrap/scss/popover";
+@import "../../../node_modules/bootstrap/scss/carousel";
+@import "../../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/offcanvas";
+@import "../../../node_modules/bootstrap/scss/placeholders";
+@import "../../../node_modules/bootstrap/scss/helpers";
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+// 12. Theme implementations
+html, .light {
+  @include rebase(
+                  $light-bg, $pastel-gray, $text-dark,
+                  $primary, $secondary, $pastel-green,
+                  $pastel-yellow, $pastel-cyan
+  );
+}
+
+.dark {
+  @include rebase(
+                  $dark-bg, $pastel-gray, $text-light,
+                  $primary, $secondary, $pastel-mint,
+                  $pastel-pink, $pastel-purple
+  );
+}
+
+// 13. Dark theme styles
+[data-bs-theme="dark"] {
+  @extend .dark;
+
+  .navbar {
+    background-color: $dark-bg;
+    border-bottom: 2px solid $primary;
+  }
+
+  .nav-link {
+    color: $text-light !important;
+    &.active {
+      color:         $primary !important;
+      border-bottom: 2px solid $primary;
+    }
+  }
+
+  .card {
+    background-color: $dark-bg;
+    border: 1px solid $pastel-gray;
+    box-shadow: 0 4px 12px rgba($primary, 0.2);
+  }
+
+  footer {
+    background-color: $dark-bg;
+    border-top: 2px solid $primary;
+  }
+
+  .btn {
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &-primary {
+      background-color: $primary;
+      border-color:     $pastel-teal;
+      color:            $text-light;
+
+      &:hover {
+        background-color: darken($primary, 10%);
+        box-shadow: 0 4px 8px rgba($primary, 0.3);
+      }
+    }
+
+    &-secondary {
+      background-color: $secondary;
+      border-color:     $pastel-purple;
+      color:            $text-light;
+
+      &:hover {
+        background-color: darken($secondary, 10%);
+        box-shadow: 0 4px 8px rgba($secondary, 0.3);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $dark-bg;
+    border: 2px solid $pastel-gray;
+    color: $text-light;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+    }
+  }
+}
+
+// 14. Light theme styles
+[data-bs-theme="light"] {
+  @extend .light;
+
+  .navbar {
+    background-color: $light-bg;
+    border-bottom: 2px solid $primary;
+  }
+
+  .nav-link {
+    color: $text-dark !important;
+    &.active {
+      color:         $primary !important;
+      border-bottom: 2px solid $primary;
+    }
+  }
+
+  .card {
+    background-color: $light-bg;
+    border: 1px solid $pastel-gray;
+    box-shadow: 0 4px 12px rgba($text-dark, 0.1);
+  }
+
+  footer {
+    background-color: $light-bg;
+    border-top: 2px solid $primary;
+  }
+
+  .btn {
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &-primary {
+      background-color: $primary;
+      border-color:     $pastel-teal;
+      color:            $light-bg;
+
+      &:hover {
+        background-color: lighten($primary, 5%);
+        box-shadow: 0 4px 8px rgba($text-dark, 0.2);
+      }
+    }
+
+    &-secondary {
+      background-color: $secondary;
+      border-color:     $pastel-purple;
+      color:            $light-bg;
+
+      &:hover {
+        background-color: lighten($secondary, 5%);
+        box-shadow: 0 4px 8px rgba($text-dark, 0.2);
+      }
+    }
+  }
+
+  .form-control {
+    background-color: $light-bg;
+    border: 2px solid $pastel-gray;
+    color: $text-dark;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+    }
+  }
+}
+
+// 15. General utility classes for all colors
+@each $name, $value in $business-pastel {
+  .bg-#{$name} {
+    background-color: $value !important;
+  }
+  .text-#{$name} {
+    color: $value !important;
+  }
+}
+
+// 16. Theme switcher styles
+#theme-toggle {
+  padding: 0;
+  color: var(--bs-body-color);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  [data-bs-theme="light"] & {
+    .bi-sun-fill { display: none; }
+    .bi-moon-fill { display: inline-block; }
+  }
+  [data-bs-theme="dark"] & {
+    .bi-sun-fill { display: inline-block; }
+    .bi-moon-fill { display: none; }
+  }
+}
+
+// 17. Theme transition
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// 18. Custom scrollbar
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bs-body-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 6px;
+  border: 3px solid var(--bs-body-bg);
+  &:hover {
+    background: darken($primary, 10%);
+  }
+}
